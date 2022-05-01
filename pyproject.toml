@@ -7,9 +7,83 @@ license = "GPL"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+uvicorn = "^0.18.3"
+fastapi = "^0.85.0"
+requests = "^2.27.1"
+aiohttp = "^3.8.1"
+websockets = "^10.3"
+dramatiq = {extras = ["redis", "watch"], version = "^1.13.0"}
+selenium = "^4.5.0"
+selenium-wire = "^5.0.0"
+undetected-chromedriver = "^3.1.5"
+structlog = "^22.1.0"
+PyVirtualDisplay = "^3.0"
+chromedriver-autoinstaller = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
+pre-commit = "^2.20.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# https://github.com/psf/black
+target-version = ["py38"]
+line-length = 120
+color = true
+
+exclude = '''
+/(
+    \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | env
+    | venv
+)/
+'''
+
+[tool.isort]
+# https://github.com/timothycrosley/isort/
+py_version = 38
+line_length = 120
+
+known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+include_trailing_comma = true
+profile = "black"
+multi_line_output = 3
+indent = 4
+color_output = true
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+python_version = 3.8
+pretty = true
+show_traceback = true
+color_output = true
+
+allow_redefinition = false
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+ignore_missing_imports = true
+implicit_reexport = false
+no_implicit_optional = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+strict_equality = true
+strict_optional = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
