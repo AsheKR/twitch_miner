@@ -7,8 +7,15 @@ license = "GPL"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+uvicorn = "^0.17.6"
+fastapi = "^0.75.2"
+requests = "^2.27.1"
+aiohttp = "^3.8.1"
+websockets = "^10.3"
 
 [tool.poetry.dev-dependencies]
+notebook = "^6.4.11"
+ipython = "^8.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
